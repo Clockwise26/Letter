@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Animation</title>
+    <style>
+	h1 {
+ 	   margin: 0 0 20px 0;
+ 	   font-size: 34px;
+ 	   font-family: 'Brush Script MT', cursive;
+	}
+	body {
+  	  background-color: lightpink;
+ 	   display: flex;
+ 	   flex-direction: column;
+  	  justify-content: center;
+  	  align-items: center;
+ 	   height: 100vh;
+ 	   margin: 0;
+	}
+        #static-image {
+            position: absolute;
+            left: 90px;
+            width: 200px;
+            height: auto;
+        }
+        #envelope-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+        }
+        #envelope-container img {
+            position: absolute;
+            width: 200%;
+            height: auto%;
+            transition: opacity 0.5s;
+            opacity: 0;
+            top: 0;
+            left: 0;
+        }
+        #envelope-container img:first-child {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1> Hi Nicole, click on the envelope to open it. Happy Valentine :)</h1> 
+    <img src="C:\Users\anton\Desktop\Letter  To Nicole\Don't open this\rose.png" alt="Static Image" id="static-image">
+    <div id="envelope-container">
+        <img src="C:\Users\anton\Desktop\Letter  To Nicole\Don't open this\closed.png" alt="Closed Envelope" id="closed">
+        <img src="C:\Users\anton\Desktop\Letter  To Nicole\Don't open this\opened.jpeg" id="opened">
+        <img src="C:\Users\anton\Desktop\Letter  To Nicole\Don't open this\slide.png" alt="Sliding Letter" id="slide">
+        <img src="C:\Users\anton\Desktop\Letter  To Nicole\Don't open this\Letter.png" alt="Note" id="note">
+    </div>
+
+    <script>
+        document.getElementById('envelope-container').addEventListener('click', function() {
+            const images = this.querySelectorAll('img');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                if (currentIndex < images.length - 1) {
+                    images[currentIndex].style.opacity = 0;
+                    currentIndex++;
+                    images[currentIndex].style.opacity = 1;
+                    setTimeout(showNextImage, 1000); // Change 1000 to adjust timing between image transitions
+                }
+            }
+
+            showNextImage();
+        });
+    </script>
+</body>
+</html>
+
